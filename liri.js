@@ -24,7 +24,15 @@ if (process.argv[2] === 'my-tweets') {
 }
 
 if (process.argv[2] === 'spotify-this-song') {
-    var song = JSON.stringify(process.argv[3]);
+    // var song = JSON.stringify(process.argv[3]);
+    var song = '';
+    for (var i = 3; i < process.argv.length; i++) {
+
+        song += process.argv[i] + " ";
+    }
+    
+    song === '' ? song = 'Ace of Base The Sign' : console.log();
+    
     spotify
         .search({ type: 'track', query: song })
         .then(function (response) {
