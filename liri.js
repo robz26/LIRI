@@ -8,12 +8,6 @@ var fs = require('fs');
 var spotify = new Spotify(keys.spotify);
 var client = new Twitter(keys.twitter);
 
-
-
-
-
-
-
 if (process.argv[2] === 'my-tweets') {
     var params = { veryimportant1: 'nodejs' };
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
@@ -73,7 +67,9 @@ if (process.argv[2] === 'movie-this') {
                 console.log("Title: " + JSON.parse(body).Title);
                 console.log("The release year is: " + JSON.parse(body).Year);
                 console.log("Rated: " + JSON.parse(body).Rated);
-                console.log("RT Rating: " + JSON.parse(body).Ratings[1].Value);
+                // console.log(JSON.parse(body).Ratings);
+                JSON.parse(body).Ratings[1] ? console.log("RT Rating: " + JSON.parse(body).Ratings[1].Value) 
+                : console.log("No RT data available");
                 console.log("Country of Origin: " + JSON.parse(body).Country);
                 console.log("Language: " + JSON.parse(body).Language);
                 console.log("Plot: " + JSON.parse(body).Plot);
